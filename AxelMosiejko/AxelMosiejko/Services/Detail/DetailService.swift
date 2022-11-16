@@ -11,13 +11,6 @@ final class DetailService : ApiService {
     
     func getMockDetail(completion: @escaping (Detail) -> Void, failure: @escaping (String) -> Void) {
         
-        let request = ApiRequest(path: .detail, method: .get)
-        self.request(request, completion: { (response: DetailDataResponse) in
-            completion(response.data)
-        }, failure: { error in
-            failure(error.message)
-        })
-        
         if let url = Bundle.main.url(forResource: "detail", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
